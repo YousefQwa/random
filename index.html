@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <img
+      style="position: absolute;z-index: -2;"
+      width="100%"
+      src="https://cdn.pixabay.com/photo/2017/05/13/23/05/img-src-x-2310895_960_720.png"
+    /> -->
+    <!-- <select name="List" id="se"
+      ><option>0</option>
+    </select> -->
+
+    <div id="aaa">
+      <h1>الهاتف الاول</h1>
+      <h1>الهاتف الثاني</h1>
+      <h1>الهاتف الثالث</h1>
+      <h1>الهاتف الرابع</h1>
+      <h1>الهاتف الخامس</h1>
+    </div>
+    <div id="aa"></div>
+    <img
+      style="    margin-left: 33%;"
+      width="33%"
+      src="https://cdn.pixabay.com/photo/2017/05/13/23/05/img-src-x-2310895_960_720.png"
+    />
+    <br />
+    <div id="bu"></div>
+  </body>
+  <script>
+    let arr = [0, 0, 0, 0, 0];
+    const a = 5;
+    console.log(a + 5);
+    const divv = document.getElementById("aa");
+    const bu = document.getElementById("bu");
+    const but = document.createElement("button");
+    but.addEventListener("click", () => {
+      console.log(
+        arr,
+        arr[parseInt(Math.random() * 5)],
+        "arr",
+        parseInt(Math.random() * 5)
+      );
+    });
+    but.innerText = "اضغط هنا لاختيار الفائز";
+    bu.appendChild(but);
+    // const c1List = document.getElementById("se");
+    for (let j = 0; j < 5; ++j) {
+      const c1List = document.createElement("select");
+      c1List.id = "list" + j;
+      const option = document.createElement("option");
+      option.innerText = "select no to mobile no." + (1 + j);
+      c1List.appendChild(option);
+      for (let i = 200; i < 301; ++i) {
+        const option = document.createElement("option");
+        option.innerText = i;
+        c1List.appendChild(option);
+
+        // const n = document.createElement("button");
+        // n.style = "width: 20%; height: 10vh;";
+        // n.addEventListener("click", q => {
+        //   const t = i;
+        //   console.log("00", t, "44", (q.target.style.visibility = "hidden"));
+        // });
+        // divv.appendChild(n);
+      }
+      c1List.addEventListener("change", () => {
+        const ai = j;
+        arr[ai] = 0;
+        try {
+          arr[ai] = Number(c1List.value) !== "NAN" ? Number(c1List.value) : 0;
+        } catch (err) {}
+        // const no1 = c1List.value.toLowerCase();
+        // imgC1.src = `https://www.xe.com/themes/xe/images/flags/svg/${lowerC1}.svg`;
+      });
+      // c1List.value = "USD";
+      divv.appendChild(c1List);
+    }
+  </script>
+  <style>
+    select {
+      width: 18%;
+    }
+    h1 {
+      width: 19%;
+      font-size: 1em;
+    }
+    #aaa {
+      display: flex;
+    }
+  </style>
+</html>

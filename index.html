@@ -31,6 +31,7 @@
     />
     <br />
     <div id="bu"></div>
+    <h1 style="width: 100%;" id="win"></h1>
   </body>
   <script>
     let arr = [0, 0, 0, 0, 0];
@@ -39,6 +40,7 @@
     const divv = document.getElementById("aa");
     const bu = document.getElementById("bu");
     const but = document.createElement("button");
+    const win = document.getElementById("win");
     but.addEventListener("click", () => {
       console.log(
         arr,
@@ -46,6 +48,14 @@
         "arr",
         parseInt(Math.random() * 5)
       );
+      let w = parseInt(Math.random() * 5);
+      let t = 50;
+      while (arr[w] === 0 && t-- !== 0) w = parseInt(Math.random() * 5);
+      if (t !== -1)
+        win.innerText =
+          "الرقم الفائز: " + arr[w] + "\n" + "الهاتف رقم : " + (w + 1);
+      else win.innerText = "لا يوجد فائز";
+      console.log(t, arr[w]);
     });
     but.innerText = "اضغط هنا لاختيار الفائز";
     bu.appendChild(but);
@@ -73,7 +83,11 @@
         const ai = j;
         arr[ai] = 0;
         try {
-          arr[ai] = Number(c1List.value) !== "NAN" ? Number(c1List.value) : 0;
+          arr[ai] = Number(c1List.value)
+            .toString()
+            .includes("N")
+            ? 0
+            : Number(c1List.value);
         } catch (err) {}
         // const no1 = c1List.value.toLowerCase();
         // imgC1.src = `https://www.xe.com/themes/xe/images/flags/svg/${lowerC1}.svg`;
